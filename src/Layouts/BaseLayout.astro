@@ -1,0 +1,40 @@
+---
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import GlobalStyles from "../components/GlobalStyles.astro"
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <GlobalStyles></GlobalStyles>
+		<title>About</title>
+
+	<style>
+		body {
+			display: grid;
+			grid-template: repeat(6, 1fr) / repeat(9, 1fr) ;
+		}	
+
+		main {
+			grid-area: 2 / 2 / 6 / 9;
+			height: 100%;
+			width: 100%;
+		}
+
+	</style>
+
+	</head>
+	<body> 
+        <Header></Header>
+		
+        <main>
+            <slot/>
+        </main>
+
+        <Footer></Footer>
+	</body>
+</html>
