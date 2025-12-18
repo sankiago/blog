@@ -1,5 +1,5 @@
 ---
-const { title, pubDate, description } = Astro.props
+const { title, pubDate, description, url } = Astro.props
 
 const date = new Date(pubDate)
 
@@ -10,7 +10,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 ---
 <style>
-  div {
+  #wrapper {
     border-block-end: solid 1px;
     padding-block: 24px
   }
@@ -23,12 +23,20 @@ const formattedDate = date.toLocaleDateString('en-US', {
     margin-block-start: 16px;
   }
 
+  .link{
+    margin-top: 8px;
+  }
+
 </style>
 
-<div>
+<div id = "wrapper">
     <h2> { title } </h2>
     <p class="date" >  { formattedDate } </p>
-    <p class= "description">  { description } </p>
+    <p class= "description">  { description } </p> 
+    <div class = "link" >
+      <a href={url}> See more... </a>
+    </div>
+    
 </div>
 
 <!-- layout: '../../layouts/PostLayout.astro'
