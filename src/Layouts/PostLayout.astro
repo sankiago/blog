@@ -1,0 +1,20 @@
+---
+import BaseLayout from "./BaseLayout.astro"
+const { frontmatter } = Astro.props;
+
+const date = new Date(frontmatter.pubDate)
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+});
+---
+<link rel="stylesheet" href="/PostLayout.css" />
+<BaseLayout title={frontmatter.title}>
+    <p class= "date" > { formattedDate } </p>
+    <h1> {frontmatter.title} </h1>
+    <p class= "author" > Written by {frontmatter.author} </p>
+    <div class="divisor"></div>
+    <slot/>
+</BaseLayout>

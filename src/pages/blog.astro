@@ -1,6 +1,19 @@
 ---
 import BaseLayout from "../Layouts/BaseLayout.astro"
+import BlogPost from "../components/BlogPost.astro";
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 ---
-<BaseLayout>
-    <p>here we'll have every entry</p>
+
+<BaseLayout title="Blog">
+    {   
+        allPosts.length > 0 
+        ? 
+            allPosts.map( ( post:any ) => {
+                const url = post.url;
+                const { title, pubDate, description, author } = post.frontmatter;
+                return <BlogPost title = {title} pubDate = {pubDate} description = {description} url= {url} />;
+            }) 
+        :
+        "There's no available blog posts"
+    }
 </BaseLayout>	

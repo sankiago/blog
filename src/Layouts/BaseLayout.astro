@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
 import GlobalStyles from "../components/GlobalStyles.astro"
+const { title } = Astro.props
 ---
 
 <html lang="en">
@@ -11,18 +12,21 @@ import GlobalStyles from "../components/GlobalStyles.astro"
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
         <GlobalStyles></GlobalStyles>
-		<title>About</title>
+		<title>{ title }</title>
 
 	<style>
 		body {
 			display: grid;
-			grid-template: repeat(6, 1fr) / repeat(9, 1fr) ;
+			grid-template-rows: minmax( 16vh , 1fr ) 1fr minmax(min-content, 1fr) 1fr 1fr minmax( 16vh , 1fr);
+			grid-template-columns: repeat(9, 1fr) ;
 		}	
+		
 
 		main {
 			grid-area: 2 / 2 / 6 / 9;
-			height: 100%;
+			min-height: 100%;
 			width: 100%;
+			/* overflow: hidden; */
 		}
 
 	</style>
