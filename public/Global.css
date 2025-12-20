@@ -11,5 +11,9 @@
 
 body {
     height: 100vh;
-    width: 100vw;
+    width: min(100vw, 100%);
+}
+
+.katex {
+  font-size: 0.97em; 
 }
