@@ -7,11 +7,13 @@ author: 'Santiago López'
 tags: ["Computing", "Number Theory"]
 ---
 
-Let $n$ be an integer. Build a set $S \subseteq [1,4n]$ of size $n$ such as for every $x,y \in S$ it holds $(x,y) \neq 1$, $x \not | y$ and $y \not | x$.
+Let $n$ be an integer. Build a set $S \subseteq [1,4n]$ of size $n$ such as for every $x,y \in S$ it holds $(x,y) > 1$, and $x$ doesn't divide $y$.
 
-Problem taken from  <a href = "https://codeforces.com/contest/1443/problem/A" > here</a> and solution <a href="https://codeforces.com/blog/entry/84298?#comment-718339"> here </a>. 
+_Problem taken from  <a href = "https://codeforces.com/contest/1443/problem/A" >Codeforces</a> and solution taken from <a href="https://codeforces.com/blog/entry/84298?#comment-718339">here</a>._
 
-How could we approach this?. Let's try for some $n$ and we'll look for a pattern or observation.
+$\phantom{sss}$
+
+How could we approach this? Let's try for some $n$ and we'll look for a pattern or observation.
 
 - $n=2$. 
     
@@ -27,6 +29,6 @@ How could we approach this?. Let's try for some $n$ and we'll look for a pattern
 
 So we make an interesting observation, the smallest $gcd$ is clearly 2, so we're gonna look only even numbers. 
 
-Let's consider the condition that forbids division between any $x,y \in S$. So we have $\frac{x}{y} \notin \Z$, nothing interesting. But if we examine the complement of this condition we have that $\frac{x}{y} = 1,2,3,..$ and fixing $y$ we realize that from $x$ and $2x$ there's no mutually divisible numbers why is it? because $2x$ is the smallest multiple and $2(x+1)$ is clearly greater than $2x$.
+Let's consider the condition that forbids division between any $x,y \in S$. So we have $\frac{x}{y} \notin \Z$, nothing interesting. But because $2x$ is the smallest multiple of $x$, we realize that from $x$ and $2x$ there's no mutually divisible numbers. Why is it? Because if $2x>y>x$ so its smallest multiple: $2y$, will be outside the range $4x>2y>2x$.
 
  If $x=2$ we have $2,3$, with $x=3$ we'll have $3,4,5$ ans so on. We can have $n$ nondivisible-betweem-them numbers considering $n,n+1,...,2n-1$!! BUT they are not all even. What can we do? ez, multiply them by two. So we'll have $S  = \{2k : k\in  [n,2n-1]\}$
